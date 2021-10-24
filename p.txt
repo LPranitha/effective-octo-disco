@@ -1,0 +1,69 @@
+X
+
+script.js
+const data = {
+mainTitle: "My Favourite indian desserts",
+cardContents: [
+{
+name: "Gulab Jamun",
+imageLink:
+"https://www.cakeindustry.in/wp-content/uploads/2015/06/gulab_jamun.jpg",
+},
+{
+name: "Rasmalai",
+imageLink:
+"https://www.palatesdesire.com/wp-content/uploads/2015/07/Rasmalai@palates_desire-scaled.jpg",
+},
+{
+name: "Jalebi",
+imageLink:
+"https://i0.wp.com/missandmrsjoshi.com/wp-content/uploads/2020/05/IMG20200526085049-01-scaled.jpeg?fit=2560%2C2560&ssl=1",
+},
+{
+name: "kheer",
+imageLink:
+"https://www.shivadairy.in/wp-content/uploads/2020/06/Rajgira_ki_kheer_Recipe.jpg",
+},
+],
+userData: { name: "Crio.Do", tagLine: "Baby steps into the world of web!" },
+};
+
+
+// Plug in title data to HTML
+let mainTitleElement = document.getElementById("main-title");
+mainTitleElement.innerHTML += data.mainTitle;
+
+
+// Create template for card content
+let getCardStructure = (name, imageLink) => {
+return `<div class="col-12 col-sm-6 mb-4">
+<div class="tile">
+<div class="tile-text text-center">
+<h5>${name}</h5>
+</div>
+<img
+src="${imageLink}" />
+</div>
+</div>`;
+};
+
+let cardRow = document.getElementById("card-row");
+
+// Plug in card data to HTML
+data.cardContents.forEach((cardContent) => {
+let { name, imageLink } = cardContent;
+cardRow.innerHTML += getCardStructure(name, imageLink);
+});
+
+// Create template for footer content
+let getFooterStructure = (name, tagLine) => {
+return `<h3 class="me-3"><i class="fas fa-heart"></i> ${name}</h3>
+<p>${tagLine}</p>`;
+};
+
+let footerContent = document.getElementById("footer");
+let { name, tagLine } = data.userData;
+
+// Plug in footer data to HTML
+footerContent.innerHTML += getFooterStructure(name, tagLine);
+ 
